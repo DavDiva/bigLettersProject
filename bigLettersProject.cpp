@@ -4,7 +4,11 @@
 #include <vector>
 #include <algorithm>
 #include <string>
-using namespace std;
+using std::cin;//instead of using namespace std; better to list only names that will be used
+using std::cout;
+using std::vector;
+using std::string;
+using std::endl;
 
 template <class T> void printVector(vector<T>& vect) //template function to print vector of any type for test purpose
 {
@@ -34,7 +38,7 @@ int main()
     {
         string str;
         getline(cin, str); //getline() is used to read chars till the newline character '\n'
-        letters[i] = str;
+        letters.at(i) = str;
     }
 
     cout << endl << endl;
@@ -44,14 +48,14 @@ int main()
         string resultStr = "";
         for (size_t j = 0; j < text.size(); j++)
         {
-            auto intLetter = static_cast<int>(text[j]);
+            int intLetter = static_cast<int>(text[j]);
             if (intLetter < A || intLetter > Z)
             {
-                resultStr += letters[i].substr(width * (Z - A + 1), width); //if entered other than A-Z letters, will output ? sign according to the entered template
+                resultStr += letters.at(i).substr(width * (Z - A + 1), width); //if entered other than A-Z letters, will output ? sign according to the entered template
             }
             else
             {
-                resultStr += letters[i].substr(width * (intLetter - A), width); //for output of A-Z letters according to the entered template
+                resultStr += letters.at(i).substr(width * (intLetter - A), width); //for output of A-Z letters according to the entered template
             }
         }
 
